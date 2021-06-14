@@ -21,7 +21,7 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $username;
+    private $userName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -31,7 +31,7 @@ class User
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $full_name;
+    private $fullName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -50,12 +50,12 @@ class User
 
     public function getUsername(): ?string
     {
-        return $this->username;
+        return $this->userName;
     }
 
-    public function setUsername(string $username): self
+    public function setUsername(string $userName): self
     {
-        $this->username = $username;
+        $this->userName = $userName;
 
         return $this;
     }
@@ -74,12 +74,12 @@ class User
 
     public function getFullName(): ?string
     {
-        return $this->full_name;
+        return $this->fullName;
     }
 
-    public function setFullName(string $full_name): self
+    public function setFullName(string $fullName): self
     {
-        $this->full_name = $full_name;
+        $this->fullName = $fullName;
 
         return $this;
     }

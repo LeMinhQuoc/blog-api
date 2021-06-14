@@ -20,12 +20,12 @@ class Comment
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      */
-    private $id_user;
+    private $idUser;
 
     /**
      * @ORM\ManyToOne(targetEntity=Blog::class)
      */
-    private $id_post;
+    private $idPost;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -40,7 +40,7 @@ class Comment
     /**
      * @ORM\ManyToOne(targetEntity=Comment::class)
      */
-    private $parent_id;
+    private $parentId;
 
     public function getId(): ?int
     {
@@ -49,24 +49,24 @@ class Comment
 
     public function getIdUser(): ?User
     {
-        return $this->id_user;
+        return $this->idUser;
     }
 
-    public function setIdUser(?User $id_user): self
+    public function setIdUser(?User $idUser): self
     {
-        $this->id_user = $id_user;
+        $this->id_user = $idUser;
 
         return $this;
     }
 
     public function getIdPost(): ?Blog
     {
-        return $this->id_post;
+        return $this->idPost;
     }
 
-    public function setIdPost(?Blog $id_post): self
+    public function setIdPost(?Blog $idPost): self
     {
-        $this->id_post = $id_post;
+        $this->id_post = $idPost;
 
         return $this;
     }
@@ -97,12 +97,12 @@ class Comment
 
     public function getParentId(): ?self
     {
-        return $this->parent_id;
+        return $this->parentId;
     }
 
-    public function setParentId(?self $parent_id): self
+    public function setParentId(?self $parentId): self
     {
-        $this->parent_id = $parent_id;
+        $this->parentId = $parentId;
 
         return $this;
     }

@@ -21,12 +21,12 @@ class Like
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      */
-    private $id_user;
+    private $idUser;
 
     /**
      * @ORM\ManyToOne(targetEntity=Blog::class)
      */
-    private $id_post;
+    private $idPost;
 
     public function getId(): ?int
     {
@@ -35,24 +35,24 @@ class Like
 
     public function getIdUser(): ?User
     {
-        return $this->id_user;
+        return $this->idUser;
     }
 
-    public function setIdUser(?User $id_user): self
+    public function setIdUser(?User $idUser): self
     {
-        $this->id_user = $id_user;
+        $this->idUser = $idUser;
 
         return $this;
     }
 
     public function getIdPost(): ?Blog
     {
-        return $this->id_post;
+        return $this->idPost;
     }
 
-    public function setIdPost(?Blog $id_post): self
+    public function setIdPost(?Blog $idPost): self
     {
-        $this->id_post = $id_post;
+        $this->idPost = $idPost;
 
         return $this;
     }

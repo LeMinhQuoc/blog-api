@@ -20,12 +20,12 @@ class Blog
     /**
      * @ORM\ManyToOne(targetEntity=Tag::class)
      */
-    private $id_tag;
+    private $idTag;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      */
-    private $id_owner;
+    private $idOwner;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -54,24 +54,24 @@ class Blog
 
     public function getIdTag(): ?Tag
     {
-        return $this->id_tag;
+        return $this->idTag;
     }
 
-    public function setIdTag(?Tag $id_tag): self
+    public function setIdTag(?Tag $idTag): self
     {
-        $this->id_tag = $id_tag;
+        $this->idTag = $idTag;
 
         return $this;
     }
 
     public function getIdOwner(): ?User
     {
-        return $this->id_owner;
+        return $this->idOwner;
     }
 
-    public function setIdOwner(?User $id_owner): self
+    public function setIdOwner(?User $idOwner): self
     {
-        $this->id_owner = $id_owner;
+        $this->idOwner = $idOwner;
 
         return $this;
     }

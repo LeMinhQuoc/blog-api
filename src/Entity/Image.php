@@ -20,17 +20,17 @@ class Image
     /**
      * @ORM\ManyToOne(targetEntity=Blog::class)
      */
-    private $id_blog;
+    private $idBlog;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $image_link;
+    private $imageLink;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $image_name;
+    private $imageName;
 
     public function getId(): ?int
     {
@@ -39,36 +39,36 @@ class Image
 
     public function getIdBlog(): ?Blog
     {
-        return $this->id_blog;
+        return $this->idBlog;
     }
 
-    public function setIdBlog(?Blog $id_blog): self
+    public function setIdBlog(?Blog $idBlog): self
     {
-        $this->id_blog = $id_blog;
+        $this->idBlog = $idBlog;
 
         return $this;
     }
 
     public function getImageLink(): ?string
     {
-        return $this->image_link;
+        return $this->imageLink;
     }
 
-    public function setImageLink(string $image_link): self
+    public function setImageLink(string $imageLink): self
     {
-        $this->image_link = $image_link;
+        $this->imageLink = $imageLink;
 
         return $this;
     }
 
     public function getImageName(): ?string
     {
-        return $this->image_name;
+        return $this->imageName;
     }
 
-    public function setImageName(string $image_name): self
+    public function setImageName(string $imageName): self
     {
-        $this->image_name = $image_name;
+        $this->imageName = $imageName;
 
         return $this;
     }

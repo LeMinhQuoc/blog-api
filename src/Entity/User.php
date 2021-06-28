@@ -108,4 +108,18 @@ class User
 
         return $this;
     }
+    public function getRoles()
+    {
+        return [];
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
 }

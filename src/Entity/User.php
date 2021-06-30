@@ -110,7 +110,7 @@ class User
     }
 
 
-//   set all user infor mation
+//   set all user's information
     public function setData(Request $input): self
     {
         $this->fullName = $input->get('fullName');

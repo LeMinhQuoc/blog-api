@@ -108,10 +108,9 @@ class User
 
         return $this;
     }
-<<<<<<< HEAD
 
 
-//    set all user infor mation
+//   set all user infor mation
     public function setData(Request $input): self
     {
         $this->fullName = $input->get('fullName');
@@ -121,7 +120,6 @@ class User
         return $this;
     }
 
-=======
     public function getRoles()
     {
         return [];
@@ -136,5 +134,4 @@ class User
     {
         // TODO: Implement eraseCredentials() method.
     }
->>>>>>> 5c1a4f6599abf01c11484638672f1116a546676a
 }

@@ -107,4 +107,16 @@ class User
 
         return $this;
     }
+
+
+//    set all user infor mation
+    public function setData(Request $input): self
+    {
+        $this->fullName = $input->get('fullName');
+        $this->email = $input->get('email');
+        $this->phone = $input->get('phone');
+        $this->userName = $input->get('userName');
+        return $this;
+    }
+
 }

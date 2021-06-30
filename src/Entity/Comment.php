@@ -4,8 +4,9 @@ namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=CommentRepository::class)
  */
 class Comment

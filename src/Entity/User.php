@@ -4,8 +4,9 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
  */
@@ -107,6 +108,7 @@ class User
 
         return $this;
     }
+<<<<<<< HEAD
 
 
 //    set all user infor mation
@@ -119,4 +121,20 @@ class User
         return $this;
     }
 
+=======
+    public function getRoles()
+    {
+        return [];
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+>>>>>>> 5c1a4f6599abf01c11484638672f1116a546676a
 }

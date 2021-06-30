@@ -4,8 +4,9 @@ namespace App\Entity;
 
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=ImageRepository::class)
  */
 class Image

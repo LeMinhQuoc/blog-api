@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\HttpFoundation\Request;
+
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -111,6 +113,8 @@ class User
 
 
 //   set all user's information
+// loi cho nay
+// em nho phai import khi su dung object
     public function setData(Request $input): self
     {
         $this->fullName = $input->get('fullName');

@@ -30,8 +30,8 @@ class UserController extends AbstractController
     {
         $user = new User();
         $user->setData($input);
-        $Password = $input->get(passWord);
-        $encoded = $encoder->encodePassword($user, $Password);
+        $password = $input->get(passWord);
+        $encoded = $encoder->encodePassword($user, $password);
         $user->setPassword($encoded);
         $manager = $this->getDoctrine()->getManager();
         $manager->persist($user);

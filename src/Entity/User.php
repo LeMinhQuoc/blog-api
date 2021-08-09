@@ -6,13 +6,15 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * @method string getUserIdentifier()
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -117,10 +119,11 @@ class User
 // em nho phai import khi su dung object
     public function setData(Request $input): self
     {
-        $this->fullName = $input->get('fullName');
-        $this->email = $input->get('email');
-        $this->phone = $input->get('phone');
-        $this->userName = $input->get('userName');
+        $data = json_decode($input->getContent(),true);
+        $this->fullName = "Le Minh Quoc";
+        $this->email = "minhquoc@gmail.com";
+        $this->phone = "039484476532";
+        $this->userName = $data['username'];
         return $this;
     }
 
@@ -137,5 +140,10 @@ class User
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function __call($name, $arguments)
+    {
+        // TODO: Implement @method string getUserIdentifier()
     }
 }

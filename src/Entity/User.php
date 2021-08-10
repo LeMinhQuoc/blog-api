@@ -5,12 +5,16 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * @method string getUserIdentifier()
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -20,9 +24,9 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255)
      */
-    private $userName;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -51,12 +55,12 @@ class User
 
     public function getUsername(): ?string
     {
-        return $this->userName;
+        return $this->username;
     }
 
     public function setUsername(string $userName): self
     {
-        $this->userName = $userName;
+        $this->username = $userName;
 
         return $this;
     }
@@ -108,6 +112,21 @@ class User
 
         return $this;
     }
+
+
+//   set all user's information
+// loi cho nay
+// em nho phai import khi su dung object
+    public function setData(Request $input): self
+    {
+        $data = json_decode($input->getContent(),true);
+        $this->fullName = "Le Minh Quoc";
+        $this->email = "minhquoc@gmail.com";
+        $this->phone = "039484476532";
+        $this->userName = $data['username'];
+        return $this;
+    }
+
     public function getRoles()
     {
         return [];
@@ -121,5 +140,10 @@ class User
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function __call($name, $arguments)
+    {
+        // TODO: Implement @method string getUserIdentifier()
     }
 }

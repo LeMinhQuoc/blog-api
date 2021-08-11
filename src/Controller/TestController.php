@@ -13,11 +13,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class TestController extends AbstractController{
 
     /**
-     * @Route("/{getUserInfo}", name="getUserInfo")
+     * @Route("/{id}", name="getUserInfo")
      */
-        public function getUserInfo(TokenStorageInterface $tokenStorageInterface, JWTTokenManagerInterface $jwtManager)
+        public function getUserInfo(TokenStorageInterface $tokenStorageInterface, JWTTokenManagerInterface $jwtManager,string $id)
         {
-            var_dump($jwtManager->decode($tokenStorageInterface->getToken()));
+            $tokenParts = explode(".",$id);
+            $tokenHeader = base64_decode($tokenParts[0]);
+            $tokenPayload = base64_decode($tokenParts[1]);
+            $jwtHeader = json_decode($tokenHeader);
+            $jwtPayload = json_decode($tokenPayload);
+            var_dump($jwtPayload);
         }
 
 }

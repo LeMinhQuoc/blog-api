@@ -36,6 +36,5 @@ class UserController extends  AbstractController
         $manager->persist($user);
         $manager->flush();
         return new JsonResponse(['success' => true]);
-
     }
 }

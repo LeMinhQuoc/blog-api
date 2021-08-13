@@ -24,7 +24,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(name="username", type="string", length=255)
+     * @ORM\Column(name="user_name", type="string", length=255)
      */
     private $username;
 
@@ -123,7 +123,7 @@ class User implements UserInterface
         $this->fullName = "Le Minh Quoc";
         $this->email = "minhquoc@gmail.com";
         $this->phone = "039484476532";
-        $this->userName = $data['username'];
+        $this->username = $data['username'];
         return $this;
     }
 

@@ -5,10 +5,18 @@ namespace App\Entity;
 use App\Repository\LikeRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\ORM\Mapping\UniqueConstraint;
+
+
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=LikeRepository::class)
- * @ORM\Table(name="`like`")
+ * @ORM\Table(name="`like`",
+ *    uniqueConstraints={
+ *        @UniqueConstraint(name="unique_user_post",
+ *            columns={"id_user_id", "id_post_id"})
+ *    }
+ * )
  */
 class Like
 {

@@ -3,11 +3,15 @@
 namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\BlogRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\SerializedName;
+
 
 /**
- * @ApiResource()
+ * @ApiResource(normalizationContext={"groups"={"blogItem"}})
  * @ORM\Entity(repositoryClass=BlogRepository::class)
+ *
  */
 class Blog
 {
@@ -15,38 +19,68 @@ class Blog
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
+     * @Groups({"blogItem"})
+     *
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Tag::class)
+     *
+     * @Groups({"blogItem"})
      */
     private $idTag;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
+     *
+     * @Groups({"blogItem"})
      */
     private $idOwner;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Groups({"blogItem"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     *
+     * @Groups({"blogItem"})
      */
     private $content;
 
     /**
      * @ORM\Column(type="integer")
+     *
+     * @Groups({"blogItem"})
      */
     private $view;
 
     /**
      * @ORM\Column(type="datetime")
+     *
+     * @Groups({"blogItem"})
      */
     private $timestamp;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Like::class, mappedBy="idPost")
+     */
+    private $likes;
+
+    /**
+     * @SerializedName("likes")
+     * @Groups({"blogItem"})
+     */
+    public function getCountLike(): ?int
+    {
+        return count($this->likes);
+    }
+
 
     public function getId(): ?int
     {

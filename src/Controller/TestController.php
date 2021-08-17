@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Helper\APIHelper;
+use App\Entity\Like;
+use App\Repository\LikeRepository;
 
 class TestController extends AbstractController{
     #[Route('/api/check ', name: 'check', methods: ['POST'])]
@@ -24,4 +26,22 @@ class TestController extends AbstractController{
             $helper->getLike($bId,$jwtPayload->userId,$token);
 
         }
+
+    #[Route('/delikes ', name: 'delike', methods: ['POST'])]
+    public function getLikeId(LikeRepository $re,Request $input)
+    {
+        $data = json_decode($input->getContent(),true);
+
+        $repository = $this->getDoctrine()->getRepository(Like::class);
+        $like = $repository->findOneBy(
+            ['idPost' =>$data["idBlog"],
+            'idUser' =>$data["idUser"]]
+        );
+
+
+var_dump($like);
+
+
+
+    }
 }

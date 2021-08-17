@@ -5,9 +5,12 @@ namespace App\Entity;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+
+
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass=CommentRepository::class)
+ * @ORM\Table(name="`comment`")
  */
 class Comment
 {
@@ -33,15 +36,15 @@ class Comment
      */
     private $comment;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $timestamp;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Comment::class)
-     */
-    private $parentId;
+//    /**
+//     * @ORM\Column(type="datetime")
+//     */
+//    private $timestamp;
+//
+//    /**
+//     * @ORM\ManyToOne(targetEntity=Comment::class)
+//     */
+//    private $parentId;
 
     public function getId(): ?int
     {

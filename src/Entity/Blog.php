@@ -72,6 +72,13 @@ class Blog
      */
     private $likes;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="idPost")
+     */
+    private $comments;
+
+
     /**
      * @SerializedName("likes")
      * @Groups({"blogItem"})
@@ -79,6 +86,15 @@ class Blog
     public function getCountLike(): ?int
     {
         return count($this->likes);
+    }
+
+    /**
+     * @SerializedName("comments")
+     * @Groups({"blogItem"})
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 
 
